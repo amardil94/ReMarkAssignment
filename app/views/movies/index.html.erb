@@ -1,0 +1,47 @@
+<div class="movies">
+  <h1>List of movies</h1>
+  <div class="search-form">
+    <%= form_with url: "/movies", :method => "get" do  |form| %>
+    <%= form.label :actor, "Search by Actor:" %>
+    <%= form.text_field :actor %>
+    <%= form.submit "Search" %>
+    <%= button_to "Reset", movies_path, method: :get %>
+    <% end %>
+  </div>
+  <div class="data">
+    <table>
+    <tr>
+        <th>Movie</th>
+        <th>Description</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th>Actors</th>
+        <th>Filming Locations</th>
+        <th>Countries</th>
+        <th>Average Rating</th>
+    </tr>
+    <% @movies.each do |movie| %>
+        <tr>
+        <td><%= movie.movie %></td>
+        <td><%= movie.description %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.actors.join(', ') %></td>
+        <td><%= movie.filming_locations.join(', ') %></td>
+        <td><%= movie.countries.join(', ') %></td>
+        <td><%= movie.average_rating %></td>
+        </tr>
+    <% end %>
+    </table>
+    <%= will_paginate @movies %>
+  </div>
+</div>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+.data {
+  margin-top: 10px;
+}
+</style>

@@ -1,24 +1,31 @@
-# README
+# ReMark Assignment by Amardil Deo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Software Versions
+- Ruby 3.3.1
+- Rails 7.1.3.4
 
-Things you may want to cover:
+## Project Setup
+Clone project, then run the following command:
+```
+bundle install
+```
 
-* Ruby version
+## Running the project
+```
+rails s
+```
 
-* System dependencies
+## Running csv import job
+```
+rails "csv:import[<path_to_files>]"
+```
 
-* Configuration
+Replace <path_to_files> with the directory that contains movies.csv and reviews.csv
 
-* Database creation
+## Routes
 
-* Database initialization
+- /movies - Movie overview
+- /api/v1/movies - Get movie data via API in JSON format
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
